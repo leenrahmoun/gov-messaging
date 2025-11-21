@@ -1,0 +1,288 @@
+{
+  "summary": {
+    "total_tests": 23,
+    "passed": 21,
+    "failed": 2
+  },
+  "details": [
+    {
+      "test": "Login as admin1",
+      "expected": "200 OK with token",
+      "actual": "200 ╪¬┘à ╪¬╪│╪¼┘è┘ä ╪º┘ä╪»╪«┘ê┘ä ╪¿┘å╪¼╪º╪¡",
+      "result": "PASS"
+    },
+    {
+      "test": "Login as mgr1",
+      "expected": "200 OK with token",
+      "actual": "200 ╪¬┘à ╪¬╪│╪¼┘è┘ä ╪º┘ä╪»╪«┘ê┘ä ╪¿┘å╪¼╪º╪¡",
+      "result": "PASS"
+    },
+    {
+      "test": "Login as emp1",
+      "expected": "200 OK with token",
+      "actual": "200 ╪¬┘à ╪¬╪│╪¼┘è┘ä ╪º┘ä╪»╪«┘ê┘ä ╪¿┘å╪¼╪º╪¡",
+      "result": "PASS"
+    },
+    {
+      "test": "Login as emp2",
+      "expected": "200 OK with token",
+      "actual": "200 ╪¬┘à ╪¬╪│╪¼┘è┘ä ╪º┘ä╪»╪«┘ê┘ä ╪¿┘å╪¼╪º╪¡",
+      "result": "PASS"
+    },
+    {
+      "test": "admin GET /users",
+      "expected": "200 OK",
+      "actual": "200 ",
+      "result": "PASS"
+    },
+    {
+      "test": "manager GET /users",
+      "expected": "403 Forbidden",
+      "actual": "403 Admin role required",
+      "result": "PASS"
+    },
+    {
+      "test": "employee GET /users",
+      "expected": "403 Forbidden",
+      "actual": "403 Admin role required",
+      "result": "PASS"
+    },
+    {
+      "test": "Admin create user",
+      "expected": "201 Created",
+      "actual": "201 ╪¬┘à ╪Ñ┘å╪┤╪º╪í ╪º┘ä┘à╪│╪¬╪«╪»┘à ╪¿┘å╪¼╪º╪¡",
+      "result": "PASS"
+    },
+    {
+      "test": "Manager create user (should fail)",
+      "expected": "403 Forbidden",
+      "actual": "403 Admin role required",
+      "result": "PASS"
+    },
+    {
+      "test": "Employee create message permission",
+      "expected": "201 Created",
+      "actual": "201 Message created",
+      "result": "PASS"
+    },
+    {
+      "test": "Employee creates draft message",
+      "expected": "status=draft",
+      "actual": "status=draft",
+      "result": "PASS"
+    },
+    {
+      "test": "Employee submits message",
+      "expected": "status=pending_approval",
+      "actual": "status=pending_approval",
+      "result": "PASS"
+    },
+    {
+      "test": "Manager approves message",
+      "expected": "status=approved",
+      "actual": "status=approved",
+      "result": "PASS"
+    },
+    {
+      "test": "Admin sends message",
+      "expected": "status=sent",
+      "actual": "status=sent",
+      "result": "PASS"
+    },
+    {
+      "test": "Receiver acknowledges message",
+      "expected": "status=received",
+      "actual": "status=unknown (HTTP 403)",
+      "result": "FAIL"
+    },
+    {
+      "test": "Visibility check for admin",
+      "expected": "Message ID present per role rules",
+      "actual": "Message 31 visible",
+      "result": "PASS"
+    },
+    {
+      "test": "Visibility check for manager",
+      "expected": "Message ID present per role rules",
+      "actual": "Message 31 visible",
+      "result": "PASS"
+    },
+    {
+      "test": "Visibility check for emp1",
+      "expected": "Message ID present per role rules",
+      "actual": "Message 31 visible",
+      "result": "PASS"
+    },
+    {
+      "test": "Visibility check for emp2",
+      "expected": "Message ID present per role rules",
+      "actual": "Message 31 visible",
+      "result": "PASS"
+    },
+    {
+      "test": "Audit trail sequence",
+      "expected": "message:create -> message:submit -> message:approve -> message:send -> message:receive",
+      "actual": "message:create -> message:submit -> message:approve -> message:send",
+      "result": "FAIL"
+    },
+    {
+      "test": "Employee cannot approve message",
+      "expected": "403 Forbidden",
+      "actual": "403 Forbidden",
+      "result": "PASS"
+    },
+    {
+      "test": "Manager cannot delete user",
+      "expected": "403 Forbidden",
+      "actual": "403 Admin role required",
+      "result": "PASS"
+    },
+    {
+      "test": "Admin cannot send draft message",
+      "expected": "409 Conflict or 400 Bad Request",
+      "actual": "409 Message must be submitted for approval before sending",
+      "result": "PASS"
+    }
+  ],
+  "negative_tests": [
+    {
+      "test": "Employee approval attempt",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "pass": true
+    },
+    {
+      "test": "Manager delete user",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "pass": true
+    },
+    {
+      "test": "Admin send draft",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "pass": true
+    }
+  ],
+  "permission_matrix": [
+    {
+      "role": "admin",
+      "endpoint": "GET /users",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "endpoint": "GET /users",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "role": "employee",
+      "endpoint": "GET /users",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "role": "admin",
+      "endpoint": "POST /users",
+      "status": 201,
+      "allowed": true
+    },
+    {
+      "role": "manager",
+      "endpoint": "POST /users",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "role": "employee",
+      "endpoint": "POST /messages",
+      "status": 201,
+      "allowed": true
+    }
+  ],
+  "lifecycle": [
+    {
+      "step": "create",
+      "status": "draft",
+      "responseStatus": 201
+    },
+    {
+      "step": "submit",
+      "status": "pending_approval",
+      "responseStatus": 200
+    },
+    {
+      "step": "approve",
+      "status": "approved",
+      "responseStatus": 200
+    },
+    {
+      "step": "send",
+      "status": "sent",
+      "responseStatus": 200
+    },
+    {
+      "step": "receive",
+      "responseStatus": 403
+    }
+  ],
+  "visibility": {
+    "admin": [
+      31,
+      26,
+      25,
+      24,
+      22,
+      21,
+      19,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      9,
+      8,
+      6,
+      5,
+      2,
+      1
+    ],
+    "manager": [
+      31,
+      26,
+      25,
+      24,
+      22,
+      21,
+      16
+    ],
+    "emp1": [
+      31,
+      26,
+      25,
+      24,
+      22,
+      21,
+      16
+    ],
+    "emp2": [
+      31,
+      26,
+      25,
+      24,
+      22,
+      21
+    ]
+  },
+  "audit_sequence": [
+    "message:create",
+    "message:submit",
+    "message:approve",
+    "message:send"
+  ]
+}
