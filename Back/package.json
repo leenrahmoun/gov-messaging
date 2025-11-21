@@ -1,0 +1,42 @@
+{
+  "name": "gov-messaging",
+  "version": "1.0.0",
+  "description": "نظام إدارة المراسلات الحكومية الرقمية",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "init-db": "node database/init.js",
+    "seed-db": "node scripts/seedDatabase.js",
+    "create-admin": "node scripts/createAdmin.js",
+    "fix-admin": "node scripts/fixAdminLogin.js",
+    "reset-admin-password": "node scripts/resetAdminPassword.js",
+    "test-db": "node scripts/testConnection.js",
+    "test-approvals": "node scripts/testApprovals.js",
+    "fix-messages": "node scripts/fixExistingMessages.js",
+    "test": "jest --detectOpenHandles",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "node tests/e2e/manual-tests.js"
+  },
+  "keywords": ["government", "messaging", "api", "postgresql"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "@jest/globals": "^29.7.0"
+  }
+}
