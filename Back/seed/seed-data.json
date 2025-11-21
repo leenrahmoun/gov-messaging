@@ -1,0 +1,129 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "name": "Human Resources",
+      "description": "إدارة الموارد البشرية"
+    },
+    {
+      "id": 2,
+      "name": "Finance",
+      "description": "إدارة المالية"
+    },
+    {
+      "id": 3,
+      "name": "IT",
+      "description": "إدارة تكنولوجيا المعلومات"
+    },
+    {
+      "id": 4,
+      "name": "Operations",
+      "description": "إدارة العمليات"
+    },
+    {
+      "id": 5,
+      "name": "Legal Affairs",
+      "description": "إدارة الشؤون القانونية"
+    }
+  ],
+  "users": [
+    {
+      "name": "Ali Hassan",
+      "email": "ali.hassan@gov.local",
+      "role": "admin",
+      "department": null,
+      "password": "123456"
+    },
+    {
+      "name": "Noura Khaled",
+      "email": "noura.khaled@gov.local",
+      "role": "admin",
+      "department": null,
+      "password": "123456"
+    },
+    {
+      "name": "Tarek Omar",
+      "email": "tarek.omar@gov.local",
+      "role": "admin",
+      "department": null,
+      "password": "123456"
+    },
+    {
+      "name": "Sara Nasser",
+      "email": "sara.nasser@gov.local",
+      "role": "manager",
+      "department": "Finance",
+      "password": "123456"
+    },
+    {
+      "name": "Rami Saeed",
+      "email": "rami.saeed@gov.local",
+      "role": "manager",
+      "department": "IT",
+      "password": "123456"
+    },
+    {
+      "name": "Hanan Yousef",
+      "email": "hanan.yousef@gov.local",
+      "role": "manager",
+      "department": "Human Resources",
+      "password": "123456"
+    },
+    {
+      "name": "Adel Kamal",
+      "email": "adel.kamal@gov.local",
+      "role": "manager",
+      "department": "Operations",
+      "password": "123456"
+    },
+    {
+      "name": "Nada Abbas",
+      "email": "nada.abbas@gov.local",
+      "role": "manager",
+      "department": "Legal Affairs",
+      "password": "123456"
+    },
+    {
+      "name": "Omar Khaled",
+      "email": "omar.khaled@gov.local",
+      "role": "employee",
+      "department": "Finance",
+      "password": "123456"
+    },
+    {
+      "name": "Lina Saleh",
+      "email": "lina.saleh@gov.local",
+      "role": "employee",
+      "department": "Finance",
+      "password": "123456"
+    },
+    {
+      "name": "Hussein Ali",
+      "email": "hussein.ali@gov.local",
+      "role": "employee",
+      "department": "Human Resources",
+      "password": "123456"
+    },
+    {
+      "name": "Amal Fathi",
+      "email": "amal.fathi@gov.local",
+      "role": "employee",
+      "department": "IT",
+      "password": "123456"
+    },
+    {
+      "name": "Maya Rashed",
+      "email": "maya.rashed@gov.local",
+      "role": "employee",
+      "department": "Operations",
+      "password": "123456"
+    },
+    {
+      "name": "Khalid Ibrahim",
+      "email": "khalid.ibrahim@gov.local",
+      "role": "employee",
+      "department": "Legal Affairs",
+      "password": "123456"
+    }
+  ]
+}
